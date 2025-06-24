@@ -3,12 +3,13 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ArticlesList from "./components/ArticlesList";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+import defaultAvatar from "./assets/user.jpeg";
 
 const App = () => {
   const currentUser = {
     username: "jessjelly",
     name: "Jess Jelly",
-    avatar_url: "./src/assets/user.jpeg",
+    avatar_url: defaultAvatar,
   };
 
   return (
