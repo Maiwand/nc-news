@@ -72,8 +72,110 @@ html {
   border-radius: 500px;
 }
 
+.main-content {
+  margin: 0 auto;
+}
+
+.article-card {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 2px solid #fff;
+  transition: 0.2s;
+}
+
+.article-card:hover {
+  border-color: #d1d4d5;
+}
+.article-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar {
+  background: #fff;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 500px;
+  height: 50px;
+  border: 1px solid rgb(223, 223, 223);
+}
+
+.article-title h3 {
+  font-size: 22px;
+}
+
+.time-ago {
+  font-size: 14px;
+  color: #818181;
+}
+
+.article-topic p {
+  background: rgb(161, 161, 161);
+  color: #fff;
+  display: inline;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 1000px;
+  transition: 0.2s;
+}
+
+.article-topic p.coding {
+  background: rgb(150, 109, 196);
+  color: #fff;
+}
+.article-topic p.cooking {
+  background: rgb(109, 184, 196);
+  color: #fff;
+}
+.article-topic p.football {
+  background: rgb(115, 196, 109);
+  color: #fff;
+}
+.article-topic p:hover {
+  opacity: 0.8;
+}
+
+.article-card-image {
+  border-radius: 10px;
+}
+
+.article-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.article-buttons p,
+.article-buttons a {
+  background-color: #f8f9fd;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+.article-buttons a {
+  background: #283841;
+  color: #fff;
+  padding: 12px 28px;
+}
+.article-buttons a:hover {
+  opacity: 0.8;
+}
+.footer {
+  margin: 0 auto;
+}
+
 .footer p {
   text-align: center;
+  margin: 30px;
 }
 
 .footer a {
