@@ -1,6 +1,8 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ArticlesList from "./components/ArticlesList";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const App = () => {
   const currentUser = {
@@ -10,10 +12,15 @@ const App = () => {
   };
 
   return (
-    <>
+    <Router>
       <Header currentUser={currentUser} />
+      <main className="main-content container">
+        <Routes>
+          <Route path="/" element={<ArticlesList />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
+    </Router>
   );
 };
 
