@@ -1,6 +1,6 @@
 const Header = ({ currentUser }) => {
   return (
-    <header className="header xl:w-7xl">
+    <header className="header container">
       <div className="header-left">
         <h1 className="logo">
           <span className="hidden">NC News</span>
