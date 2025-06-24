@@ -71,3 +71,11 @@ html {
   height: 50px;
   border-radius: 500px;
 }
+
+.footer p {
+  text-align: center;
+}
+
+.footer a {
+  color: #226cb1;
+}

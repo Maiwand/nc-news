@@ -1,4 +1,5 @@
 import "./App.css";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <>
       <Header currentUser={currentUser} />
+      <Footer />
     </>
   );
 };
