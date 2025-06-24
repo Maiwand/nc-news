@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Router>
       <Header currentUser={currentUser} />
-      <main className="main-content container">
+      <main className="main-content container w-6xl grid grid-cols-3">
         <Routes>
           <Route path="/" element={<ArticlesList />} />
         </Routes>
