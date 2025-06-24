@@ -35,3 +35,27 @@ export const getUser = (username) => {
       return data.user;
     });
 };
+
+export const getArticleById = (article_id) => {
+  return fetch(`${baseUrl}/articles/${article_id}`)
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((errorData) => {
+          if (response.status === 404) {
+            return Promise.reject({
+              status: response.status,
+              msg: "Article not found.",
+            });
+          }
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Failed to load article.",
+          });
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.article;
+    });
+};
