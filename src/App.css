@@ -47,6 +47,10 @@ html {
   padding: 10px;
 }
 
+.main-content {
+  gap: 20px;
+}
+
 .user-info {
   background: #f8f9fd;
   padding: 7px;
@@ -169,6 +173,65 @@ html {
 .article-buttons a:hover {
   opacity: 0.8;
 }
+
+.article-content-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title-bar {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px;
+  border-radius: 20px;
+}
+
+.article-full-image {
+  border-radius: 20px;
+}
+
+h2.article-title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.article-stats-container {
+  background: #fff;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.article-sidebar {
+  background: #fff;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
+  gap: 30px;
+}
+.avatar-sidebar {
+  height: 120px;
+  margin-bottom: 15px;
+}
+.sidebar-author-card p {
+  font-weight: 5 00;
+}
+
+.view-profile-btn {
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+  background: #f8f9fd;
+  width: 100%;
+  cursor: not-allowed;
+}
+
 .footer {
   margin: 0 auto;
 }
