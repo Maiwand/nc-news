@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ArticlesList from "./components/ArticlesList";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+import SingleArticlePage from "./components/singleArticlePage";
 import defaultAvatar from "./assets/user.jpeg";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
       <main className="main-content container w-6xl grid grid-cols-3">
         <Routes>
           <Route path="/" element={<ArticlesList />} />
+          <Route path="/articles/:article_id" element={<SingleArticlePage />} />
         </Routes>
       </main>
       <Footer />
