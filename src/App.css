@@ -232,6 +232,84 @@ h2.article-title {
   cursor: not-allowed;
 }
 
+.comments-section-container h3 {
+  text-align: center;
+  margin: 10px 0 30px 0;
+  font-size: 20px;
+}
+
+.comments-section {
+  background: #fff;
+  border-radius: 20px;
+}
+
+.comments-section .no-comments {
+  text-align: center;
+  padding: 30px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.comment-card {
+  background: #f8f9fd;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.comment-meta-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-meta {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-author-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.comment-date {
+  font-size: 14px;
+  color: #818181;
+}
+
+.delete-comment-btn {
+  background: rgb(255, 208, 208);
+  color: rgb(192, 0, 0);
+  padding: 8px 16px;
+  font-size: 13px;
+  height: fit-content;
+  border-radius: 100px;
+  cursor: not-allowed;
+  transition: 0.2s;
+}
+
+.delete-comment-btn:hover {
+  background: rgb(254, 177, 177);
+}
+.delete-comment-btn:active {
+  background: rgb(192, 0, 0);
+  color: #fff;
+}
+
+.comment-stats p {
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  width: fit-content;
+}
+
 .footer {
   margin: 0 auto;
 }
@@ -243,4 +321,16 @@ h2.article-title {
 
 .footer a {
   color: #226cb1;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
+
+.blue {
+  background: blue;
 }
