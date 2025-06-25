@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import { getArticleById, getUser } from "../api";
 import { formatDistanceToNow, format } from "date-fns";
 import { Link } from "react-router";
+import CommentsList from "./CommentsList";
 
-const SingleArticlePage = () => {
+const SingleArticlePage = ({ currentUser }) => {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -69,20 +70,19 @@ const SingleArticlePage = () => {
             <p className={article.topic}>{article.topic}</p>
           </div>
         </div>
-
         <img
           src={article.article_img_url}
           alt={article.title}
           className="article-full-image"
         />
         <p className="article-body">{article.body}</p>
-
         <div className="article-stats-container article-buttons">
-          <div class="article-stats">
+          <div className="article-stats">
             <p>Votes: 0</p>
             <p>Comments: 11</p>
           </div>
         </div>
+        <CommentsList article_id={article_id} currentUser={currentUser} />
       </div>
 
       <aside className="article-sidebar">
