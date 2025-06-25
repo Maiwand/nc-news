@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatDistanceToNow, format } from "date-fns";
 import { getUser } from "../api";
+import defaultAvatar from "../assets/default-user.jpg";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -22,7 +23,7 @@ const ArticleCard = ({ article }) => {
   };
 
   const formatFullDate = (date) => {
-    return format(date, "d MMMM yyyy - HH:mm");
+    return format(date, "d MMMM yyyy - p");
   };
 
   const [authorAvatar, setAuthorAvatar] = useState("");
@@ -42,7 +43,7 @@ const ArticleCard = ({ article }) => {
         console.log(`Error fetching avatar for ${author}:`, err);
         setAvatarError("Could not load avatar");
         setIsLoadingAvatar(false);
-        setAuthorAvatar("../assets/default-user.jpg");
+        setAuthorAvatar(defaultAvatar);
       });
   }, [author]);
 
