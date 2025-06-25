@@ -59,3 +59,21 @@ export const getArticleById = (article_id) => {
       return data.article;
     });
 };
+
+export const getCommentsByArticleId = (article_id) => {
+  return fetch(`${baseUrl}/articles/${article_id}/comments`)
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((errorData) => {
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Failed to load comments.",
+          });
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.comments;
+    });
+};
