@@ -19,7 +19,10 @@ const App = () => {
       <main className="main-content container w-6xl grid grid-cols-3">
         <Routes>
           <Route path="/" element={<ArticlesList />} />
-          <Route path="/articles/:article_id" element={<SingleArticlePage />} />
+          <Route
+            path="/articles/:article_id"
+            element={<SingleArticlePage currentUser={currentUser} />}
+          />
         </Routes>
       </main>
       <Footer />
