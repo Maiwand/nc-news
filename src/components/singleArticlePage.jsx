@@ -4,6 +4,7 @@ import { getArticleById, getUser } from "../api";
 import { formatDistanceToNow, format } from "date-fns";
 import { Link } from "react-router";
 import CommentsList from "./CommentsList";
+import VoteButton from "./VoteButton";
 
 const SingleArticlePage = ({ currentUser }) => {
   const { article_id } = useParams();
@@ -78,8 +79,8 @@ const SingleArticlePage = ({ currentUser }) => {
         <p className="article-body">{article.body}</p>
         <div className="article-stats-container article-buttons">
           <div className="article-stats">
-            <p>Votes: 0</p>
-            <p>Comments: 11</p>
+            <VoteButton article_id={article_id} initialVotes={article.votes} />
+            <p>Comments: {article.comment_count}</p>
           </div>
         </div>
         <CommentsList article_id={article_id} currentUser={currentUser} />
