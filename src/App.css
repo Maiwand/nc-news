@@ -147,6 +147,7 @@ html {
 
 .article-card-image {
   border-radius: 10px;
+  min-width: 100%;
 }
 
 .article-buttons {
@@ -202,6 +203,45 @@ h2.article-title {
   background: #fff;
   padding: 10px;
   border-radius: 20px;
+}
+
+.vote-controls {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vote-button {
+  width: 48px;
+  background-color: #f8f9fd;
+  margin-right: 1px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.upvote-button.voted {
+  background: #f1fef7;
+  color: #04c17d;
+}
+.upvote-button.voted:hover {
+  background: #d8ffea;
+}
+.downvote-button.voted {
+  background: #fbebf0;
+  color: #dc2250;
+}
+.downvote-button.voted:hover {
+  background: #fadfe6;
+}
+
+.vote-button:hover {
+  background-color: #e9eaf0;
+}
+
+p.vote-count {
+  width: 48px;
+  border-radius: 0;
+  text-align: center;
 }
 
 .article-sidebar {
