@@ -77,3 +77,27 @@ export const getCommentsByArticleId = (article_id) => {
       return data.comments;
     });
 };
+
+export const patchArticleVotes = (article_id, inc_votes) => {
+  return fetch(`${baseUrl}/articles/${article_id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ inc_votes }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((errorData) => {
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Error occurred",
+          });
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.article;
+    });
+};
