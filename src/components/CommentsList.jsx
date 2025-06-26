@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../api";
 import CommentCard from "./CommentCard";
+import PostCommentForm from "./PostCommentForm";
 
 const CommentsList = ({ article_id, currentUser }) => {
   const [comments, setComments] = useState([]);
@@ -32,6 +33,11 @@ const CommentsList = ({ article_id, currentUser }) => {
 
   return (
     <section className="comments-section-container">
+      <PostCommentForm
+        article_id={article_id}
+        currentUser={currentUser}
+        setComments={setComments}
+      />
       <h3>Comments</h3>
       <div className="comments-section">
         {comments.length === 0 ? (
