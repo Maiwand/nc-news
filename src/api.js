@@ -101,3 +101,33 @@ export const patchArticleVotes = (article_id, inc_votes) => {
       return data.article;
     });
 };
+
+export const postComment = (article_id, username, body) => {
+  return fetch(`${baseUrl}/articles/${article_id}/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, body }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((errorData) => {
+          if (response.status === 400) {
+            return Promise.reject({
+              status: response.status,
+              msg: errorData.msg || "Invalid comment data",
+            });
+          }
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Error occurred",
+          });
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.comment;
+    });
+};
