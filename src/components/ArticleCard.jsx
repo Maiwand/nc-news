@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { formatDistanceToNow, format } from "date-fns";
 import { getUser } from "../api";
 import defaultAvatar from "../assets/default-user.jpg";
+import VoteButton from "./VoteButton";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -48,51 +49,53 @@ const ArticleCard = ({ article }) => {
   }, [author]);
 
   return (
-    <Link to={`/articles/${article_id}`}>
-      <div className="article-card">
-        <div className="article-card-meta">
-          {isLoadingAvatar ? (
-            <div className="profile-loading-avatar">...</div>
-          ) : avatarError ? (
-            <img
-              src={authorAvatar}
-              alt="Default Avatar"
-              className="profile-avatar"
-            />
-          ) : (
-            <img
-              src={authorAvatar}
-              alt={`${author}'s avatar`}
-              className="profile-avatar"
-            />
-          )}
-          <div className="author-name">{author}</div>
-          <span>·</span>
+    <div className="article-card">
+      <div className="article-card-meta">
+        {isLoadingAvatar ? (
+          <div className="profile-loading-avatar">...</div>
+        ) : avatarError ? (
+          <img
+            src={authorAvatar}
+            alt="Default Avatar"
+            className="profile-avatar"
+          />
+        ) : (
+          <img
+            src={authorAvatar}
+            alt={`${author}'s avatar`}
+            className="profile-avatar"
+          />
+        )}
+        <div className="author-name">{author}</div>
+        <span>·</span>
 
-          <div className="time-ago" title={formatFullDate(articleDate)}>
-            {formatTimeAgo(articleDate)}
-          </div>
+        <div className="time-ago" title={formatFullDate(articleDate)}>
+          {formatTimeAgo(articleDate)}
         </div>
+      </div>
+      <Link to={`/articles/${article_id}`}>
         <div className="article-title">
           <h3>{title}</h3>
         </div>
-        <Link to={`/topics/${topic}`}>
-          <div className="article-topic">
-            <p className={topic}>{topic}</p>
-          </div>
-        </Link>
-        <img src={article_img_url} alt={title} className="article-card-image" />
-        <div className="article-buttons">
-          <div className="article-stats">
-            <p>Votes: {votes}</p>
-            <p>Comments: {comment_count}</p>
-          </div>
-          <Link className="article-link" to={`/articles/${article_id}`}>
-            Read Article
-          </Link>
+      </Link>
+      <Link className="w-fit" to={`/topics/${topic}`}>
+        <div className="article-topic">
+          <p className={topic}>{topic}</p>
         </div>
+      </Link>
+      <Link to={`/articles/${article_id}`}>
+        <img src={article_img_url} alt={title} className="article-card-image" />
+      </Link>
+      <div className="article-buttons">
+        <div className="article-stats">
+          <VoteButton article_id={article_id} initialVotes={votes} />
+          <p>Comments: {comment_count}</p>
+        </div>
+        <Link className="article-link" to={`/articles/${article_id}`}>
+          Read Article
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 
