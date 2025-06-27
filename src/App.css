@@ -2,6 +2,7 @@
 
 html {
   background: #f8f9fd;
+  overflow-y: scroll;
 }
 
 .header {
@@ -379,6 +380,39 @@ p.vote-count {
 .comment-form button:hover {
   background: #425b6a;
 }
+
+.topic-controller {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.topics-list {
+  display: flex;
+  gap: 5px;
+}
+
+.topics-list li a {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  display: block;
+  border: 1px solid rgb(226, 226, 226);
+  color: rgb(173, 173, 173);
+  transition: 0.2s;
+}
+.topics-list li a:hover {
+  border: 1px solid rgb(136, 136, 136);
+  color: rgb(130, 130, 130);
+}
+.topics-list li a.active-topic-link {
+  background: #283841;
+  color: #fff;
+  border-color: #283841;
+}
+
 .footer {
   margin: 0 auto;
 }
