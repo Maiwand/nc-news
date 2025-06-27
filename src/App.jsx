@@ -11,6 +11,7 @@ import {
 } from "react-router";
 import SingleArticlePage from "./components/SingleArticlePage";
 import TopicsNav from "./components/TopicsNav";
+import SortOptions from "./components/SortOptions";
 import defaultAvatar from "./assets/user.jpeg";
 
 const Layout = ({ currentUser }) => {
@@ -25,6 +26,7 @@ const Layout = ({ currentUser }) => {
         {showTopicsNav && (
           <div className="topic-controller col-span-2">
             <TopicsNav />
+            <SortOptions />
           </div>
         )}
         <Outlet />
