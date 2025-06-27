@@ -70,17 +70,16 @@ const PostCommentForm = ({ article_id, currentUser, setComments }) => {
           rows={4}
           disabled={isPostingComment}
         ></textarea>
-
+        {postCommentError && (
+          <p className="comment-error-message">{postCommentError}</p>
+        )}
+        {submissionSuccess && (
+          <p className="comment-success-message">Comment posted!</p>
+        )}
         <button
           type="submit"
           disabled={isPostingComment || !newCommentBody.trim()}
         >
-          {postCommentError && (
-            <p className="comment-error-message">{postCommentError}</p>
-          )}
-          {submissionSuccess && (
-            <p className="comment-success-message">Comment posted!</p>
-          )}
           {isPostingComment ? "Posting..." : "Post Comment"}
         </button>
       </form>
