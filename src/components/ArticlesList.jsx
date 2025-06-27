@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import { useParams } from "react-router";
 
 const ArticlesList = () => {
+  const { topic_slug } = useParams();
+
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +14,7 @@ const ArticlesList = () => {
     setIsLoading(true);
     setError(null);
 
-    getArticles()
+    getArticles(topic_slug)
       .then((fetchedArticles) => {
         setArticles(fetchedArticles);
         setIsLoading(false);
@@ -23,7 +26,7 @@ const ArticlesList = () => {
         );
         setIsLoading(false);
       });
-  }, []);
+  }, [topic_slug]);
 
   if (isLoading) {
     return <p className="loading-message">Loading articles...</p>;
