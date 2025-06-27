@@ -49,6 +49,7 @@ const CommentsList = ({ article_id, currentUser }) => {
                 key={comment.comment_id}
                 comment={comment}
                 currentUser={currentUser}
+                setComments={setComments}
               />
             ))}
           </div>

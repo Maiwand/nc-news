@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
-import { getUser } from "../api";
+import { getUser, deleteComment } from "../api";
 import defaultAvatar from "../assets/default-user.jpg";
 
-const CommentCard = ({ comment, currentUser }) => {
+const CommentCard = ({ comment, currentUser, setComments }) => {
   const { comment_id, votes, created_at, author, body } = comment;
 
   const commentDate = new Date(created_at);
@@ -19,6 +19,8 @@ const CommentCard = ({ comment, currentUser }) => {
   const [authorAvatar, setAuthorAvatar] = useState("");
   const [isLoadingAvatar, setIsLoadingAvatar] = useState(true);
   const [avatarError, setAvatarError] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState(null);
 
   useEffect(() => {
     setIsLoadingAvatar(true);
@@ -38,6 +40,27 @@ const CommentCard = ({ comment, currentUser }) => {
   }, [author]);
 
   const canDelete = currentUser && currentUser.username === author;
+  const handleDelete = () => {
+    setIsDeleting(true);
+    setDeleteError(null);
+
+    setTimeout(() => {
+      deleteComment(comment_id)
+        .then(() => {
+          setComments((currentComments) =>
+            currentComments.filter((comm) => comm.comment_id !== comment_id)
+          );
+          setIsDeleting(false);
+        })
+        .catch((err) => {
+          setIsDeleting(false);
+          setDeleteError(
+            err.message || "Failed to delete comment. Please try again."
+          );
+          console.log("Comment delete error:", err);
+        });
+    }, 1500);
+  };
 
   return (
     <div className="comment-card">
@@ -66,8 +89,12 @@ const CommentCard = ({ comment, currentUser }) => {
           </div>
         </div>
         {canDelete && (
-          <button className="delete-comment-btn" disabled>
-            Delete
+          <button
+            onClick={handleDelete}
+            className="delete-comment-btn"
+            disabled={isDeleting}
+          >
+            {isDeleting ? "Deleting..." : "Delete"}
           </button>
         )}
       </div>
