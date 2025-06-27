@@ -5,6 +5,7 @@ import { formatDistanceToNow, format } from "date-fns";
 import { Link } from "react-router";
 import CommentsList from "./CommentsList";
 import VoteButton from "./VoteButton";
+import ErrorPage from "./ErrorPage";
 
 const SingleArticlePage = ({ currentUser }) => {
   const { article_id } = useParams();
@@ -14,11 +15,11 @@ const SingleArticlePage = ({ currentUser }) => {
 
   const [authorAvatar, setAuthorAvatar] = useState("");
   const [isLoadingAvatar, setIsLoadingAvatar] = useState(true);
-  const [avatarError, setAvatarError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
     setError(null);
+
     getArticleById(article_id)
       .then((fetchedArticle) => {
         setArticle(fetchedArticle);
@@ -30,36 +31,32 @@ const SingleArticlePage = ({ currentUser }) => {
         setIsLoadingAvatar(false);
       })
       .catch((err) => {
-        console.log("Error fetching article or author avatar:", err);
-        setError(
-          err.message || "Failed to load article. Please check the URL."
-        );
+        console.error("Error fetching article or avatar:", err);
+        setError(err);
         setIsLoading(false);
         setIsLoadingAvatar(false);
-        setAuthorAvatar("../assets/default-user.jpg");
       });
   }, [article_id]);
-
-  const formatTimeAgo = (dateString) => {
-    const date = new Date(dateString);
-    return formatDistanceToNow(date, { addSuffix: true });
-  };
-
-  const formatFullDate = (dateString) => {
-    const date = new Date(dateString);
-    return format(date, "d MMMM yyyy");
-  };
 
   if (isLoading) {
     return <p className="loading-message">Loading article...</p>;
   }
 
   if (error) {
-    return <p className="error-message">{error}</p>;
-  }
-
-  if (!article) {
-    return <p className="error-message">Article data not available.</p>;
+    if (error.status === 404) {
+      return (
+        <ErrorPage
+          status={404}
+          message="Article not found. Try returning to the articles list."
+        />
+      );
+    }
+    return (
+      <ErrorPage
+        status={error.status}
+        message={error.msg || "Failed to load article. Please check the URL."}
+      />
+    );
   }
 
   return (
@@ -87,8 +84,15 @@ const SingleArticlePage = ({ currentUser }) => {
       </div>
 
       <aside className="article-sidebar">
-        <p className="time-ago" title={formatFullDate(article.created_at)}>
-          Posted {formatTimeAgo(article.created_at)} By
+        <p
+          className="time-ago"
+          title={format(article.created_at, "d MMMM yyyy - p")}
+        >
+          Posted{" "}
+          {formatDistanceToNow(new Date(article.created_at), {
+            addSuffix: true,
+          })}{" "}
+          By
         </p>
         <div className="sidebar-author-card">
           {isLoadingAvatar ? (
@@ -102,7 +106,9 @@ const SingleArticlePage = ({ currentUser }) => {
           )}
           <p>{article.author}</p>
         </div>
-        <button className="view-profile-btn">View Profile</button>
+        <button className="view-profile-btn" disabled>
+          View Profile
+        </button>
       </aside>
     </>
   );
