@@ -1,7 +1,11 @@
 const baseUrl = "https://nc-news-be-ltni.onrender.com/api";
 
-export const getArticles = () => {
-  return fetch(`${baseUrl}/articles`)
+export const getArticles = (topic = null) => {
+  let url = `${baseUrl}/articles`;
+  if (topic) {
+    url += `?topic=${topic}`;
+  }
+  return fetch(url)
     .then((response) => {
       if (!response.ok) {
         return response.json().then((errorData) => {
@@ -156,4 +160,22 @@ export const deleteComment = (comment_id) => {
     }
     return;
   });
+};
+
+export const getTopics = () => {
+  return fetch(`${baseUrl}/topics`)
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((errorData) => {
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Error occurred",
+          });
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data.topics;
+    });
 };
