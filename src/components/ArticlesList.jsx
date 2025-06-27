@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 
 const ArticlesList = () => {
   const { topic_slug } = useParams();
+  const [searchParams] = useSearchParams();
+
+  const sortBy = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
 
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +18,7 @@ const ArticlesList = () => {
     setIsLoading(true);
     setError(null);
 
-    getArticles(topic_slug)
+    getArticles(topic_slug, sortBy, order)
       .then((fetchedArticles) => {
         setArticles(fetchedArticles);
         setIsLoading(false);
@@ -26,7 +30,7 @@ const ArticlesList = () => {
         );
         setIsLoading(false);
       });
-  }, [topic_slug]);
+  }, [topic_slug, sortBy, order]);
 
   if (isLoading) {
     return <p className="loading-message">Loading articles...</p>;
