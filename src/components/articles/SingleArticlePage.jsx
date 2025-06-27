@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getArticleById, getUser } from "../api";
+import { getArticleById, getUser } from "../../api";
 import { formatDistanceToNow, format } from "date-fns";
-import CommentsList from "./CommentsList";
-import VoteButton from "./VoteButton";
-import ErrorPage from "./ErrorPage";
-import Loading from "./Loading";
+import CommentsList from "../comments/CommentsList";
+import VoteButton from "../ui/VoteButton";
+import ErrorPage from "../ui/ErrorPage";
+import Loading from "../ui/Loading";
 
 const SingleArticlePage = ({ currentUser }) => {
   const { article_id } = useParams();

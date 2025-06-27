@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getCommentsByArticleId } from "../api";
+import { getCommentsByArticleId } from "../../api";
 import CommentCard from "./CommentCard";
-import PostCommentForm from "./PostCommentForm";
-import Loading from "./Loading";
+import PostCommentForm from "../comments/PostCommentForm";
+import Loading from "../ui/Loading";
 
 const CommentsList = ({ article_id, currentUser }) => {
   const [comments, setComments] = useState([]);

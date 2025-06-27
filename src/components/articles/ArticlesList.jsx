@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getArticles } from "../api";
+import { getArticles } from "../../api";
 import ArticleCard from "./ArticleCard";
-import ErrorPage from "./ErrorPage";
-import Loading from "./Loading";
+import ErrorPage from "../ui/ErrorPage";
+import Loading from "../ui/Loading";
 import { useParams, useSearchParams } from "react-router";
 
 const ArticlesList = () => {

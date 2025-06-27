@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import { getTopics } from "../api";
+import { getTopics } from "../../api";
 
 const TopicsNav = () => {
   const [topics, setTopics] = useState([]);

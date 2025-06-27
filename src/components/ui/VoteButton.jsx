@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { patchArticleVotes } from "../api";
+import { patchArticleVotes } from "../../api";
 
 const VoteButton = ({ article_id, initialVotes }) => {
   const [displayVotes, setDisplayVotes] = useState(initialVotes);

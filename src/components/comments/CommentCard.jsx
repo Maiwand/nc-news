@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow, format } from "date-fns";
-import { getUser, deleteComment } from "../api";
-import defaultAvatar from "../assets/default-user.jpg";
+import { getUser, deleteComment } from "../../api";
+import defaultAvatar from "../../assets/default-user.jpg";
 
 const CommentCard = ({ comment, currentUser, setComments }) => {
   const { comment_id, votes, created_at, author, body } = comment;

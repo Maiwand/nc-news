@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
-import img404 from "../assets/not-found.png";
-import imgGeneric from "../assets/error.png";
+import img404 from "../../assets/not-found.png";
+import imgGeneric from "../../assets/error.png";
 
 const ErrorPage = ({ message, status = 0 }) => {
   const imgSrc = status === 404 ? img404 : imgGeneric;

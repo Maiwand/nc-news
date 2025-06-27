@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatDistanceToNow, format } from "date-fns";
-import { getUser } from "../api";
-import defaultAvatar from "../assets/default-user.jpg";
-import VoteButton from "./VoteButton";
-import Loading from "./Loading";
+import { getUser } from "../../api";
+import defaultAvatar from "../../assets/default-user.jpg";
+import VoteButton from "../ui/VoteButton";
+import Loading from "../ui/Loading";
 
 const ArticleCard = ({ article }) => {
   const {

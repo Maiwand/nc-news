@@ -1,7 +1,4 @@
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import ArticlesList from "./components/ArticlesList";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,11 +6,14 @@ import {
   useLocation,
   Outlet,
 } from "react-router";
-import SingleArticlePage from "./components/SingleArticlePage";
-import TopicsNav from "./components/TopicsNav";
+import Footer from "./components/navigation/Footer";
+import Header from "./components/navigation/Header";
+import ArticlesList from "./components/articles/ArticlesList";
+import SingleArticlePage from "./components/articles/SingleArticlePage";
+import TopicsNav from "./components/navigation/TopicsNav";
 import SortOptions from "./components/SortOptions";
 import defaultAvatar from "./assets/user.jpeg";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./components/ui/ErrorPage";
 
 const Layout = ({ currentUser }) => {
   const location = useLocation();
