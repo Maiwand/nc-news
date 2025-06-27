@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 import { useParams, useSearchParams } from "react-router";
 
 const ArticlesList = () => {
   const { topic_slug } = useParams();
   const [searchParams] = useSearchParams();
-
   const sortBy = searchParams.get("sort_by") || "created_at";
   const order = searchParams.get("order") || "desc";
 
@@ -24,10 +24,8 @@ const ArticlesList = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log("Error fetching articles:", err);
-        setError(
-          err.message || "Failed to load articles. Please try again later."
-        );
+        console.error("Error fetching articles:", err);
+        setError(err);
         setIsLoading(false);
       });
   }, [topic_slug, sortBy, order]);
@@ -37,7 +35,20 @@ const ArticlesList = () => {
   }
 
   if (error) {
-    return <p className="error-message">{error}</p>;
+    if (error.status === 404) {
+      return (
+        <ErrorPage
+          status={404}
+          message="Topic not found. Try viewing all articles."
+        />
+      );
+    }
+    return (
+      <ErrorPage
+        status={error.status}
+        message={error.msg || "Failed to load articles."}
+      />
+    );
   }
 
   return (
