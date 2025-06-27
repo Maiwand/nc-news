@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 import { useParams, useSearchParams } from "react-router";
 
 const ArticlesList = () => {
@@ -24,14 +25,13 @@ const ArticlesList = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching articles:", err);
         setError(err);
         setIsLoading(false);
       });
   }, [topic_slug, sortBy, order]);
 
   if (isLoading) {
-    return <p className="loading-message">Loading articles...</p>;
+    return <Loading message="Loading articles..." />;
   }
 
   if (error) {

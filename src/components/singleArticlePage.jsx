@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getArticleById, getUser } from "../api";
 import { formatDistanceToNow, format } from "date-fns";
-import { Link } from "react-router";
 import CommentsList from "./CommentsList";
 import VoteButton from "./VoteButton";
 import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 
 const SingleArticlePage = ({ currentUser }) => {
   const { article_id } = useParams();
@@ -39,7 +39,7 @@ const SingleArticlePage = ({ currentUser }) => {
   }, [article_id]);
 
   if (isLoading) {
-    return <p className="loading-message">Loading article...</p>;
+    return <Loading message="Loading article..." />;
   }
 
   if (error) {
@@ -96,7 +96,7 @@ const SingleArticlePage = ({ currentUser }) => {
         </p>
         <div className="sidebar-author-card">
           {isLoadingAvatar ? (
-            <div className="profile-loading-avatar avatar-sidebar"></div>
+            <Loading className="avatar-loading" />
           ) : (
             <img
               src={authorAvatar}

@@ -4,6 +4,7 @@ import { formatDistanceToNow, format } from "date-fns";
 import { getUser } from "../api";
 import defaultAvatar from "../assets/default-user.jpg";
 import VoteButton from "./VoteButton";
+import Loading from "./Loading";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -52,7 +53,7 @@ const ArticleCard = ({ article }) => {
     <div className="article-card">
       <div className="article-card-meta">
         {isLoadingAvatar ? (
-          <div className="profile-loading-avatar">...</div>
+          <Loading variant="inline-loader" />
         ) : avatarError ? (
           <img
             src={authorAvatar}

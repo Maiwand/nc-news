@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../api";
 import CommentCard from "./CommentCard";
 import PostCommentForm from "./PostCommentForm";
+import Loading from "./Loading";
 
 const CommentsList = ({ article_id, currentUser }) => {
   const [comments, setComments] = useState([]);
@@ -24,7 +25,7 @@ const CommentsList = ({ article_id, currentUser }) => {
   }, [article_id]);
 
   if (isLoading) {
-    return <p className="loading-message">Loading comments...</p>;
+    return <Loading message="Loading comments..." />;
   }
 
   if (error) {
