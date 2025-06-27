@@ -331,7 +331,7 @@ p.vote-count {
   font-size: 13px;
   height: fit-content;
   border-radius: 100px;
-  cursor: not-allowed;
+  cursor: pointer;
   transition: 0.2s;
 }
 
