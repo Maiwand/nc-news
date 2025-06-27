@@ -477,6 +477,45 @@ p.vote-count {
   background-color: #283841;
   color: #fff;
 }
+.go-home-button {
+  display: inline-block;
+  padding: 8px 24px;
+  background-color: #283841;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.go-home-button:hover {
+  background-color: #3a5564;
+}
+
+.error-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.error404 {
+  background: #c0d3d3;
+}
+
+.error-page.error {
+  background: #fcdac0;
+}
+
+.error-page img {
+  height: 380px;
+}
+
+.error-details {
+  width: 100%;
+}
 
 .footer {
   margin: 0 auto;
