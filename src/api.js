@@ -1,10 +1,27 @@
 const baseUrl = "https://nc-news-be-ltni.onrender.com/api";
 
-export const getArticles = (topic = null) => {
+export const getArticles = (
+  topic = null,
+  sort_by = "created_at",
+  order = "desc"
+) => {
   let url = `${baseUrl}/articles`;
+  const params = new URLSearchParams();
+
   if (topic) {
-    url += `?topic=${topic}`;
+    params.append("topic", topic);
   }
+  if (sort_by) {
+    params.append("sort_by", sort_by);
+  }
+  if (order) {
+    params.append("order", order);
+  }
+
+  if (params.toString()) {
+    url += `?${params.toString()}`;
+  }
+  console.log(url);
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
