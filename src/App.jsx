@@ -13,6 +13,7 @@ import SingleArticlePage from "./components/SingleArticlePage";
 import TopicsNav from "./components/TopicsNav";
 import SortOptions from "./components/SortOptions";
 import defaultAvatar from "./assets/user.jpeg";
+import ErrorPage from "./components/ErrorPage";
 
 const Layout = ({ currentUser }) => {
   const location = useLocation();
@@ -52,6 +53,15 @@ const App = () => {
           <Route
             path="articles/:article_id"
             element={<SingleArticlePage currentUser={currentUser} />}
+          />
+          <Route
+            path="*"
+            element={
+              <ErrorPage
+                status={404}
+                message="Whoops—this page doesn’t exist. Try returning home."
+              />
+            }
           />
         </Route>
       </Routes>
