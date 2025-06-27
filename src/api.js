@@ -131,3 +131,29 @@ export const postComment = (article_id, username, body) => {
       return data.comment;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return fetch(`${baseUrl}/comments/${comment_id}`, {
+    method: "DELETE",
+  }).then((response) => {
+    if (!response.ok) {
+      return response.text().then((errorText) => {
+        try {
+          const errorData = JSON.parse(errorText);
+          return Promise.reject({
+            status: response.status,
+            msg: errorData.msg || "Error occurred",
+          });
+        } catch {
+          return Promise.reject(
+            new Error({
+              status: response.status,
+              msg: errorData.msg || "Failed to delete comment",
+            })
+          );
+        }
+      });
+    }
+    return;
+  });
+};
