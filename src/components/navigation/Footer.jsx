@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer container w-6xl">
+    <footer className="footer container w-full xl:w-6xl">
       <p>
         &copy; {new Date().getFullYear()} NC News | Made by
         <a

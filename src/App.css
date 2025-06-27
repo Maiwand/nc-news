@@ -36,20 +36,109 @@ html {
   gap: 10px;
   height: 100%;
 }
+
 .header-nav ul li a {
   padding: 15px 25px;
   border-radius: 10px;
   transition: 0.2s;
 }
+
 .header-nav ul li a:hover {
   background: #f8f9fd;
 }
 .header-right {
   padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+@media (max-width: 1024px) {
+  .logo img {
+    width: 100px;
+  }
+
+  .header {
+    padding: 0 10px;
+  }
+  .header-nav ul li a {
+    padding: 15px 10px;
+  }
+  .error-page {
+    flex-direction: column-reverse;
+  }
+
+  .error-details {
+    margin: 60px;
+  }
 }
 
+@media (max-width: 768px) {
+  .user-info {
+    padding-left: 7px !important;
+  }
+  .user-info span {
+    display: none;
+  }
+  .header-nav {
+    display: none;
+  }
+  .topic-controller {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .article-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  .article-stats {
+    justify-content: center;
+  }
+  .menu-btn {
+    display: block !important;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .error-details {
+    margin: 30px 0 40px;
+  }
+}
+.phone-navbar {
+  display: block;
+  margin-top: -20px;
+  overflow: hidden;
+  height: 0;
+  transition: 0.2s;
+}
+.phone-navbar.open {
+  height: auto;
+  padding: 10px;
+  margin-top: -15px;
+}
+.phone-navbar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.phone-navbar ul li a {
+  background: rgb(235, 235, 235);
+  padding: 15px 25px;
+  border-radius: 10px;
+  transition: 0.2s;
+  display: block;
+}
+.menu-btn {
+  display: none;
+}
+
+.menu-btn img {
+  height: 42px;
+}
 .main-content {
-  gap: 20px;
+  row-gap: 20px;
 }
 
 .user-info {
@@ -510,7 +599,7 @@ p.vote-count {
 }
 
 .error-page img {
-  height: 380px;
+  max-height: 380px;
 }
 
 .error-details {

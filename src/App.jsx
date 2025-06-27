@@ -23,7 +23,7 @@ const Layout = ({ currentUser }) => {
   return (
     <div className="App">
       <Header currentUser={currentUser} />
-      <main className="main-content container w-6xl grid grid-cols-3">
+      <main className="main-content container w-full px-4 mx-auto grid grid-cols-1 xl:grid-cols-3 xl:w-6xl">
         {showTopicsNav && (
           <div className="topic-controller col-span-2">
             <TopicsNav />
