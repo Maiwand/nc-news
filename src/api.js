@@ -21,7 +21,6 @@ export const getArticles = (
   if (params.toString()) {
     url += `?${params.toString()}`;
   }
-  console.log(url);
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
