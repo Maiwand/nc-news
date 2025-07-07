@@ -23,8 +23,8 @@ const TopicsNav = () => {
       });
   }, []);
 
-  if (isLoading) {
-    return <p className="topics-nav-loading">Loading topics...</p>;
+  if (!isLoading) {
+    return <div className="loader-inline"></div>;
   }
 
   if (error) {
