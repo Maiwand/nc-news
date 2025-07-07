@@ -1,6 +1,6 @@
 # NC News
 
-**Deployed version:** [Live Demo](https://cool-cocada-fc6d05.netlify.app/)
+**Deployed version:** [Live Demo](https://nc-news-miii.netlify.app/)
 
 ## Overview
 
